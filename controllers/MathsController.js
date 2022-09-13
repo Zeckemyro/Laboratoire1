@@ -28,12 +28,9 @@ module.exports =
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '/':
-                            if(parseInt(this.HttpContext.path.params.y) === 0 && parseInt(this.HttpContext.path.params.x) === 0)
+                            if(parseInt(this.HttpContext.path.params.y) === 0)
                             {
                                 this.HttpContext.path.params.value = "NaN";
-                            }
-                            else if(parseInt(this.HttpContext.path.params.y)){
-                                this.HttpContext.path.params.value = "Infinity";
                             }
                             else{
                                 this.HttpContext.path.params.value = parseInt(this.HttpContext.path.params.x) / parseInt(this.HttpContext.path.params.y);
