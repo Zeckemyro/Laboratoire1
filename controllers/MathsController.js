@@ -47,11 +47,11 @@ module.exports =
                             {
                                 this.HttpContext.path.params.error = "Too many parameters";
                             }
-                            if(parseInt(this.HttpContext.path.params.y) === 0 && parseInt(this.HttpContext.path.params.y))
+                            if(parseInt(this.HttpContext.path.params.y) === 0 && parseInt(this.HttpContext.path.params.x) === 0)
                             {
                                 this.HttpContext.path.params.value = "NaN";
                             }
-                            else if(parseInt(this.HttpContext.path.params.y) === 0)
+                            else if(parseInt(this.HttpContext.path.params.y) === 0 && (parseInt(this.HttpContext.path.params.x) > 0 || parseInt(this.HttpContext.path.params.x) < 0))
                             {
                                 this.HttpContext.path.params.value = "Infinity";
                             }
