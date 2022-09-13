@@ -5,6 +5,9 @@ module.exports =
         constructor(HttpContext){
             super(HttpContext);
         }
+        sendError(errorMessage){
+            this.HttpContext.path.params.error = errorMessage();
+        }
         get(){
             if(this.HttpContext.path.queryString == '?'){
                 // Send help page
@@ -18,35 +21,23 @@ module.exports =
                     }
                     switch(this.HttpContext.path.params.op){
                         case '+':
-                            if(this.checkParams(3))
-                            {
-                                this.HttpContext.path.params.error = "Too many parameters";
-                            }
+                            this.checkParams(3)
                             this.HttpContext.path.params.value = parseInt(this.HttpContext.path.params.x) + parseInt(this.HttpContext.path.params.y);
                             console.log(parseInt(this.HttpContext.path.params.x));
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '-':
-                            if(this.checkParams(3))
-                            {
-                                this.HttpContext.path.params.error = "Too many parameters";
-                            }
+                            this.checkParams(3)
                             this.HttpContext.path.params.value = parseInt(this.HttpContext.path.params.x) - parseInt(this.HttpContext.path.params.y);
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '*':
-                            if(this.checkParams(3))
-                            {
-                                this.HttpContext.path.params.error = "Too many parameters";
-                            }
+                            this.checkParams(3)
                             this.HttpContext.path.params.value = parseInt(this.HttpContext.path.params.x) * parseInt(this.HttpContext.path.params.y);
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '/':
-                            if(this.checkParams(3))
-                            {
-                                this.HttpContext.path.params.error = "Too many parameters";
-                            }
+                            this.checkParams(3)
                             if(parseInt(this.HttpContext.path.params.y) === 0 && parseInt(this.HttpContext.path.params.x) === 0)
                             {
                                 this.HttpContext.path.params.value = "NaN";
@@ -61,10 +52,7 @@ module.exports =
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '%':
-                            if(this.checkParams(3))
-                            {
-                                this.HttpContext.path.params.error = "Too many parameters";
-                            }
+                            this.checkParams(3)
                             if(parseInt(this.HttpContext.path.params.y) === 0)
                             {
                                 this.HttpContext.path.params.value = "NaN";
@@ -74,10 +62,7 @@ module.exports =
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '!':
-                            if(this.checkParams(2))
-                            {
-                                this.HttpContext.path.params.error = "Too many parameters";
-                            }
+                            this.checkParams(2)
                             if(parseInt(this.HttpContext.path.params.n) <= 0){
                                 this.HttpContext.path.params.error = "'n' parameter must be a positive integer";
                             }else{
@@ -86,18 +71,12 @@ module.exports =
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case 'p':
-                            if(this.checkParams(2))
-                            {
-                                this.HttpContext.path.params.error = "Too many parameters";
-                            }
+                            this.checkParams(2)
                             this.HttpContext.path.params.value = isPrime(parseInt(this.HttpContext.path.params.n));
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case 'np':
-                            if(this.checkParams(2))
-                            {
-                                this.HttpContext.path.params.error = "Too many parameters";
-                            }
+                            this.checkParams(2)
                             this.HttpContext.path.params.value = findPrime(parseInt(this.HttpContext.path.params.n));
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
@@ -113,9 +92,9 @@ module.exports =
         }
         checkParams(nbParams){
             if(Object.keys(this.HttpContext.path.params).length > nbParams){
-                return true;
+                this.sendError("Too many parameters");
             }
-            return false;
+            return true;
         }
     }
     function isPrime(value) {
