@@ -51,9 +51,9 @@ module.exports =
                             {
                                 this.HttpContext.path.params.value = "NaN";
                             }
-                            else if(parseInt(this.HttpContext.path.params.y))
+                            else if(parseInt(this.HttpContext.path.params.y) === 0)
                             {
-                                this.HttpContext.path.params.error = "Infinity";
+                                this.HttpContext.path.params.value = "Infinity";
                             }
                             else{
                                 this.HttpContext.path.params.value = parseInt(this.HttpContext.path.params.x) / parseInt(this.HttpContext.path.params.y);
