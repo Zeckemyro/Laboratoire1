@@ -18,7 +18,7 @@ module.exports =
                     }
                     switch(this.HttpContext.path.params.op){
                         case '+':
-                            if(this.checkParams(2))
+                            if(this.checkParams(3))
                             {
                                 this.HttpContext.path.params.error = "Too many parameters";
                             }
@@ -27,7 +27,7 @@ module.exports =
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '-':
-                            if(this.checkParams(2))
+                            if(this.checkParams(3))
                             {
                                 this.HttpContext.path.params.error = "Too many parameters";
                             }
@@ -35,7 +35,7 @@ module.exports =
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '*':
-                            if(this.checkParams(2))
+                            if(this.checkParams(3))
                             {
                                 this.HttpContext.path.params.error = "Too many parameters";
                             }
@@ -43,7 +43,7 @@ module.exports =
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '/':
-                            if(this.checkParams(2))
+                            if(this.checkParams(3))
                             {
                                 this.HttpContext.path.params.error = "Too many parameters";
                             }
@@ -57,7 +57,7 @@ module.exports =
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '%':
-                            if(this.checkParams(2))
+                            if(this.checkParams(3))
                             {
                                 this.HttpContext.path.params.error = "Too many parameters";
                             }
