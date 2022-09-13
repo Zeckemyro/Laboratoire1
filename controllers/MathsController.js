@@ -48,7 +48,7 @@ module.exports =
                             break;
                         case '!':
                             if(parseInt(this.HttpContext.path.params.n) <= 0){
-                                this.HttpContext.path.params.value = "'n' parameter must be a positive integer";
+                                this.HttpContext.path.params.error = "'n' parameter must be a positive integer";
                             }else{
                                 this.HttpContext.path.params.value = factorial(parseInt(this.HttpContext.path.params.n));
                             }
