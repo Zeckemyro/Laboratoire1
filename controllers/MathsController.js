@@ -15,49 +15,50 @@ module.exports =
                 if(this.HttpContext.path.params.op){
                     switch(this.HttpContext.path.params.op){
                         case ' ' || '+':
-                            this.HttpContext.path.params.result = parseInt(this.HttpContext.path.params.x) + parseInt(this.HttpContext.path.params.y);
+                            this.HttpContext.path.params.value = parseInt(this.HttpContext.path.params.x) + parseInt(this.HttpContext.path.params.y);
+                            console.log(parseInt(this.HttpContext.path.params.x));
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '-':
-                            this.HttpContext.path.params.result = parseInt(this.HttpContext.path.params.x) - parseInt(this.HttpContext.path.params.y);
+                            this.HttpContext.path.params.value = parseInt(this.HttpContext.path.params.x) - parseInt(this.HttpContext.path.params.y);
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '*':
-                            this.HttpContext.path.params.result = parseInt(this.HttpContext.path.params.x) * parseInt(this.HttpContext.path.params.y);
+                            this.HttpContext.path.params.value = parseInt(this.HttpContext.path.params.x) * parseInt(this.HttpContext.path.params.y);
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '/':
                             if(parseInt(this.HttpContext.path.params.y) === 0)
                             {
-                                this.HttpContext.path.params.result = "NaN";
+                                this.HttpContext.path.params.value = "NaN";
                             }else{
-                                this.HttpContext.path.params.result = parseInt(this.HttpContext.path.params.x) / parseInt(this.HttpContext.path.params.y);
+                                this.HttpContext.path.params.value = parseInt(this.HttpContext.path.params.x) / parseInt(this.HttpContext.path.params.y);
                             }
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '%':
                             if(parseInt(this.HttpContext.path.params.y) === 0)
                             {
-                                this.HttpContext.path.params.result = "NaN";
+                                this.HttpContext.path.params.value = "NaN";
                             }else{
-                                this.HttpContext.path.params.result = parseInt(this.HttpContext.path.params.x) % parseInt(this.HttpContext.path.params.y);
+                                this.HttpContext.path.params.value = parseInt(this.HttpContext.path.params.x) % parseInt(this.HttpContext.path.params.y);
                             }
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case '!':
                             if(parseInt(this.HttpContext.path.params.n) <= 0){
-                                this.HttpContext.path.params.result = "'n' parameter must be a positive integer";
+                                this.HttpContext.path.params.value = "'n' parameter must be a positive integer";
                             }else{
-                                this.HttpContext.path.params.result = factorial(parseInt(this.HttpContext.path.params.n));
+                                this.HttpContext.path.params.value = factorial(parseInt(this.HttpContext.path.params.n));
                             }
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case 'p':
-                            this.HttpContext.path.params.result = isPrime(parseInt(this.HttpContext.path.params.n));
+                            this.HttpContext.path.params.value = isPrime(parseInt(this.HttpContext.path.params.n));
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         case 'np':
-                            this.HttpContext.path.params.result = findPrime(parseInt(this.HttpContext.path.params.n));
+                            this.HttpContext.path.params.value = findPrime(parseInt(this.HttpContext.path.params.n));
                             this.HttpContext.response.JSON(this.HttpContext.path.params);
                             break;
                         default:
